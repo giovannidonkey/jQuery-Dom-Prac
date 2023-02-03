@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Reviewer</title>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <form>
+        <label for="title">Movie Title: </label>
+        <input id="title" placeholder="Enter Movie Title" required>
+        <label for="rating">Rating (0 - 10): </label>
+        <input id="rating" type="number" min="0" max="10"> 
+        <button id="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+
+     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+     <script> 
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            let title = $('#title').val();
+            let rating = $('#rating').val();
+
+            let res = $('<div></div>').text(`${title} : ${rating}/10 `);
+            res.append($('<button id="remove">X</button>'));
+            $('#output').append(res);
+            $('#remove').on('click', function(e){ e.target.parentElement.remove();});
+            $('form').trigger('reset');
+        });
+     </script>
+</body>
+</html>
